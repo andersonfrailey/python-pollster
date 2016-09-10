@@ -3,11 +3,21 @@
 Methods for accessing the HuffPost Pollster API. Documentation for this API
 may be found at http://elections.huffingtonpost.com/pollster/api.
 """
+try:
+    from urllib.parse import urlencode
+    from urllib.request import urlopen
+    from urllib.error import HTTPError
 
-from future.moves.urllib.parse import urlencode
-from future.moves.urllib.request import urlopen
-from future.moves.urllib.error import HTTPError
-from future.utils import iteritems
+    def get_items(x):
+        return x.items()
+except ImportError:
+    from urllib2 import urlopen
+    from urllib2 import HTTPError
+    from urllib import urlencode
+
+    def get_items(x):
+        return x.viewitems()
+
 
 try:
     import json
@@ -87,7 +97,7 @@ class Chart(object):
                  'topic',
                  'state',
                  'slug', ]
-        for key, val in iteritems(result):
+        for key, val in get_items(result):
             if key in valid:
                 setattr(self, key, val)
 
@@ -133,7 +143,7 @@ class Poll(object):
                  'sponsors',
                  'partisan',
                  'affiliation']
-        for key, val in iteritems(result):
+        for key, val in get_items(result):
             if key in valid:
                 setattr(self, key, val)
 
