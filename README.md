@@ -13,10 +13,10 @@ which provides access to political opinion polling data and trend estimates from
 from pollster import Pollster
 pollster = Pollster()
 ```
-See the current estimate of the president's job approval
+See the current estimate of Obama's job approval
 ```.py
 chart = pollster.charts(topic='obama-job-approval')[0]
-chart.estimate()
+chart.estimates
 ```
 List charts about 2012 Senate races
 ```.py
