@@ -80,7 +80,7 @@ except ApiException as e:
 Perhaps the best documentation is `example.py`: it shows how to use all API
 endpoints and how to paginate.
 
-See https://elections.huffingtonpost.com/pollster/api/v2/help for more details.
+See https://elections.huffingtonpost.com/pollster/api/v2 for more details.
 
 See https://app.swaggerhub.com/api/huffpostdata/pollster-api/2.0.0 for full API
 documentation. The Python-specific warts:
