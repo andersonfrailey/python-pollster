@@ -363,7 +363,7 @@ class Api(object):
                                                     'survey_house': 'str',
                                                     'question_text': 'str',
                                                     'sample_subpopulation': 'str',
-                                                    'observations': 'int',
+                                                    'observations': 'float', # because it's sometimes NA
                                                     'margin_of_error': 'float',
                                                     'mode': 'str',
                                                     'partisanship': 'str',
@@ -1073,7 +1073,7 @@ class Api(object):
                                                     'survey_house': 'str',
                                                     'question_text': 'str',
                                                     'sample_subpopulation': 'str',
-                                                    'observations': 'int',
+                                                    'observations': 'float', # because it's sometimes NA
                                                     'margin_of_error': 'float',
                                                     'mode': 'str',
                                                     'partisanship': 'str',
@@ -1202,7 +1202,7 @@ class Api(object):
                                                     'survey_house': 'str',
                                                     'question_text': 'str',
                                                     'sample_subpopulation': 'str',
-                                                    'observations': 'int',
+                                                    'observations': 'float', # because it's sometimes NA
                                                     'margin_of_error': 'float',
                                                     'mode': 'str',
                                                     'partisanship': 'str',
