@@ -359,15 +359,15 @@ class Api(object):
                                             pandas_read_table_kwargs={
                                                 'dtype': {
                                                     # float64 columns will be detected automatically
-                                                    'poll_slug': 'str',
-                                                    'survey_house': 'str',
-                                                    'question_text': 'str',
-                                                    'sample_subpopulation': 'str',
+                                                    'poll_slug': 'object',
+                                                    'survey_house': 'object',
+                                                    'question_text': 'object',
+                                                    'sample_subpopulation': 'object',
                                                     'observations': 'float', # because it's sometimes NA
                                                     'margin_of_error': 'float',
-                                                    'mode': 'str',
-                                                    'partisanship': 'str',
-                                                    'partisan_affiliation': 'str'
+                                                    'mode': 'object',
+                                                    'partisanship': 'object',
+                                                    'partisan_affiliation': 'object'
                                                 },
                                                 'parse_dates': [ 'start_date', 'end_date' ]
                                             },
@@ -485,7 +485,7 @@ class Api(object):
                                             callback=params.get('callback'),
                                             pandas_read_table_kwargs={
                                                 'dtype': {
-                                                    'label': 'str',
+                                                    'label': 'object',
                                                     'value': 'float64',
                                                     'low': 'float64',
                                                     'high': 'float64',
@@ -1069,15 +1069,15 @@ class Api(object):
                                             pandas_read_table_kwargs={
                                                 'dtype': {
                                                     # float64 columns will be detected automatically
-                                                    'poll_slug': 'str',
-                                                    'survey_house': 'str',
-                                                    'question_text': 'str',
-                                                    'sample_subpopulation': 'str',
+                                                    'poll_slug': 'object',
+                                                    'survey_house': 'object',
+                                                    'question_text': 'object',
+                                                    'sample_subpopulation': 'object',
                                                     'observations': 'float', # because it's sometimes NA
                                                     'margin_of_error': 'float',
-                                                    'mode': 'str',
-                                                    'partisanship': 'str',
-                                                    'partisan_affiliation': 'str'
+                                                    'mode': 'object',
+                                                    'partisanship': 'object',
+                                                    'partisan_affiliation': 'object'
                                                 },
                                                 'parse_dates': [ 'start_date', 'end_date' ]
                                             },
@@ -1195,18 +1195,18 @@ class Api(object):
                                             callback=params.get('callback'),
                                             pandas_read_table_kwargs={
                                                 'dtype': {
-                                                    'response_text': 'str',
-                                                    'pollster_label': 'str',
+                                                    'response_text': 'object',
+                                                    'pollster_label': 'object',
                                                     'value': 'float64',
-                                                    'poll_slug': 'str',
-                                                    'survey_house': 'str',
-                                                    'question_text': 'str',
-                                                    'sample_subpopulation': 'str',
+                                                    'poll_slug': 'object',
+                                                    'survey_house': 'object',
+                                                    'question_text': 'object',
+                                                    'sample_subpopulation': 'object',
                                                     'observations': 'float', # because it's sometimes NA
                                                     'margin_of_error': 'float',
-                                                    'mode': 'str',
-                                                    'partisanship': 'str',
-                                                    'partisan_affiliation': 'str'
+                                                    'mode': 'object',
+                                                    'partisanship': 'object',
+                                                    'partisan_affiliation': 'object'
                                                 },
                                                 'parse_dates': [ 'start_date', 'end_date' ]
                                             },

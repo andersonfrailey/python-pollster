@@ -29,6 +29,7 @@ import os
 import re
 import json
 import mimetypes
+import sys
 import tempfile
 import threading
 
@@ -38,11 +39,10 @@ from datetime import date
 import pandas
 
 # python 2 and python 3 compatibility library
-from six import PY3, integer_types, iteritems, text_type
+from six import PY3, integer_types, iteritems, text_type, StringIO
 from six.moves.urllib.parse import quote
 
 from .configuration import Configuration
-
 
 class ApiClient(object):
     """
@@ -161,7 +161,7 @@ class ApiClient(object):
             if header_params['Accept'] == 'text/tab-separated-values':
                 kwargs = pandas_read_table_kwargs
                 if kwargs is None: kwargs = {}
-                return_data = pandas.read_table(io.StringIO(response_data.data), **kwargs)
+                return_data = pandas.read_table(StringIO(response_data.data), **kwargs)
             elif response_type:
                 return_data = self.deserialize(response_data, response_type)
             else:
@@ -266,16 +266,18 @@ class ApiClient(object):
 
             # convert str to class
             # for native types
-            if klass in ['int', 'float', 'str', 'bool',
+            if klass in ['int', 'float', 'bool',
                          "date", 'datetime', "object"]:
                 klass = eval(klass)
+            elif klass == 'str':
+                klass = text_type
             elif klass == 'long':
                 klass = int if PY3 else long
             # for model types
             else:
                 klass = eval('models.' + klass)
 
-        if klass in integer_types or klass in (float, str, bool):
+        if klass in integer_types or klass in (float, text_type, bool):
             return self.__deserialize_primitive(data, klass)
         elif klass == object:
             return self.__deserialize_object(data)
@@ -563,7 +565,7 @@ class ApiClient(object):
         :param data: str.
         :param klass: class literal.
 
-        :return: int, long, float, str, bool.
+        :return: int, long, float, str, bool. unicode instead of str in python2.
         """
         try:
             value = klass(data)
